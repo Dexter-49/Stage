@@ -5,15 +5,19 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Provider as ReduxProvider } from "react-redux";
+import { store } from "./store";
 
-const clientQuery =new QueryClient();
+const clientQuery = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <QueryClientProvider client={clientQuery}>
-    <BrowserRouter basename="/">
-      <App />
-    </BrowserRouter>
+    <ReduxProvider store={store}>
+      <BrowserRouter basename="/">
+        <App />
+      </BrowserRouter>
+    </ReduxProvider>
   </QueryClientProvider>
 );
 

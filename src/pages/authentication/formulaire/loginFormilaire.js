@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -22,8 +23,8 @@ const AuthLogin = () => {
     mutationFn:(data)=>{
       return axios.post('/api/token/',data)
     },
-    onSuccess:(data)=>{
-      console.log(data)
+    onSuccess:({data})=>{
+      localStorage.setItem('token',data?.access)
     }
   })
   const formik = useFormik({

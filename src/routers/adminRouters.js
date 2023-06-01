@@ -1,9 +1,15 @@
 
-
+import Layout from "../layout";
+import ListUser from "../pages/UserManger/ListUser";
 
 const admin={
-    parh:'admin/',
-    elemant:null,
-    children:{}
+    path:'admin',
+    element:<Layout/>,
+    children:[
+        {
+            path:'users',
+            element:<ListUser/>
+        }
+    ]
 }
 export default admin;
